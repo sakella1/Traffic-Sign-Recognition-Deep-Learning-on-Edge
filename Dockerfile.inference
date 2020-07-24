@@ -1,0 +1,16 @@
+FROM  w251/tensorflow:dev-tx2-4.3_b132-tf1
+
+RUN apt-get update
+
+RUN apt-get install -y python3-pip
+
+RUN pip3 install Pillow numpy paho-mqtt
+
+RUN apt-get install -y vim
+
+WORKDIR /
+
+COPY inference.py /inference.py
+COPY test_route/ test_route
+COPY model /model
+
